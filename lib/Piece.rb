@@ -1,6 +1,8 @@
 require_relative('MoveModule')
 require_relative('CoordSplitter')
+
 class Piece
+
 	include Moves
 	include CoordSplitter
 
@@ -8,7 +10,7 @@ class Piece
 
 	def initialize(initial)
 		@initial = cord_splitter(initial)
-		@valid_moves = moves
+		@valid_moves = moves.flatten
 		if @initial[1] <= 2
 			@color = "White"
 		else
@@ -20,7 +22,7 @@ class Piece
 
      def valid_move?(final_pos)
      	new_pos = cord_splitter(final_pos)
-		diff = [(@initial[0] - new_pos[0]), (@initial[1] - new_pos[1])]
+		diff = [(@initial[0] - new_pos[0]).abs, (@initial[1] - new_pos[1]).abs]
 		@valid_moves.each do |move|
 			if move.coords == diff
 				return true
@@ -31,17 +33,13 @@ class Piece
 end
 
 class Pawn < Piece
-	def initialize(initial)
-		@initial = cord_splitter(initial)
-		moves
-	end
-
 	def moves
-		if @movecount == 0
-			straight_in_any_direction(2)
-		else
-			straight_in_any_direction(1)
-		end
+		# if @movecount == 0
+		# 	straight_in_any_direction(2)
+		# else
+		# 	straight_in_any_direction(1)
+		# end
+		[straight_in_any_direction(2), straight_in_any_direction(1)]
 	end
 end
 class Bishop < Piece
@@ -52,8 +50,7 @@ end
 
 class Queen < Piece
 	def moves
-		straight_in_any_direction(1..7)
-		diagonal(1..7)
+		[straight_in_any_direction(1..7), diagonal(1..7)]
 	end
 end
 
@@ -65,8 +62,7 @@ end
 
 class King < Piece
 	def moves
-		straight_in_any_direction(1)
-		diagonal(1)
+		[straight_in_any_direction(1), diagonal(1)]
 	end
 end
 

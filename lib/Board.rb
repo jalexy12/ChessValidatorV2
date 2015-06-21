@@ -1,5 +1,7 @@
 require_relative("Piece")
+
 class Board
+	attr_reader :board
 	def initialize()
 		@board = {
 			a1: Rook.new("a1"), a2: Pawn.new("a2"), a3: nil, a4: nil, a5: nil, a6: nil, a7: Pawn.new("a7"), a8: Rook.new("a8"), 
@@ -11,5 +13,25 @@ class Board
 			g1: Knight.new("g1"), g2: Pawn.new("g2"), g3: nil, g4: nil, g5: nil, g6: nil, g7: Pawn.new("g7"), g8: Knight.new("g8"), 
 			h1: Rook.new("h1"), h2: Pawn.new("h2"), h3: nil, h4: nil, h5: nil, h6: nil, h7: Pawn.new("h7"), h8: Rook.new("h8") 
 		}
+	end
+
+	def check_valid(initial, final)
+		init = initial.to_sym
+
+		if @board[init].nil?
+			puts "Invalid"
+			return false
+		elsif @board[init].valid_move?(final)
+			puts "Valid"
+			return true
+		elsif !@board[init].valid_move?(final)
+			puts "Invalid"
+			return false
+		elsif !@board.has_key?(initial.to_sym)
+			puts "Invalid"
+			return false
+		else
+			puts "Wtf"
+		end
 	end
 end

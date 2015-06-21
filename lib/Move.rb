@@ -1,4 +1,4 @@
-class Move
+	class Move
 	attr_reader :column
 	attr_reader :row
 	attr_reader :coords
