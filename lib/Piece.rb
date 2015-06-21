@@ -21,7 +21,6 @@ class Piece
 
 	def update_pos!(position)
 		@initial = cord_splitter(position)
-		puts @initial
 	end
 
      def valid_move?(final_pos)
@@ -36,39 +35,4 @@ class Piece
      end
 end
 
-class Pawn < Piece
-	def moves
-		[straight_in_any_direction(2), straight_in_any_direction(1)]
-	end
-end
-
-class Bishop < Piece
-	def moves
-		diagonal(1..7)
-	end
-end
-
-class Queen < Piece
-	def moves
-		[straight_in_any_direction(1..7), diagonal(1..7)]
-	end
-end
-
-class Rook < Piece
-	def moves
-		straight_in_any_direction(1..7)
-	end
-end
-
-class King < Piece
-	def moves
-		[straight_in_any_direction(1), diagonal(1)]
-	end
-end
-
-class Knight < Piece
-	def moves
-		l_shape
-	end
-end
 

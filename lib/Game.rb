@@ -30,17 +30,17 @@ class Game
 		@table.rows = @rows
 	end
 
-	# def validate
-	# 	moves = IO.read("chessMoves.txt").split("\n")
+	def validate
+		moves = IO.read("chessMoves.txt").split("\n")
 
-	# 	moves.each do | move |
-	# 		new_move = move.split
-	# 		# @board.move!(new_move[0], new_move[1])
-	# 	end	
-	# 	print @table
-	# end
+		moves.each do | move |
+			new_move = move.split
+		    # @board.move!(new_move[0], new_move[1])
+		    update_table!(new_move[0], new_move[1])
+		end	
+	end
 
-	def update_table(original, final)
+	def update_table!(original, final)
 		x =  cord_splitter(original)[0] - 1
 		y =  cord_splitter(original)[1] - 1	
 

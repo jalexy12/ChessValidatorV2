@@ -1,5 +1,12 @@
-require_relative("Piece")
+require_relative("Bishop")
+require_relative("King")
+require_relative("Knight")
+require_relative("Pawn")
+require_relative("Queen")
+require_relative("Rook")
 
+
+require 'pry'
 class Board
 	attr_reader :board
 	def initialize()
@@ -42,6 +49,7 @@ class Board
 			@board[new_pos.to_sym] = @board[piece.to_sym]
 			@board[new_pos.to_sym].update_pos!(new_pos)
 			@board[piece] = nil
+			# binding.pry
 		else
 			puts "Not valid"
 		end
