@@ -18,7 +18,10 @@ class Piece
 		end
 		@movecount = 0
 	end
-		
+
+	def update_pos!(position)
+		@initial = cord_splitter(position)
+	end
 
      def valid_move?(final_pos)
      	new_pos = cord_splitter(final_pos)
@@ -34,14 +37,10 @@ end
 
 class Pawn < Piece
 	def moves
-		# if @movecount == 0
-		# 	straight_in_any_direction(2)
-		# else
-		# 	straight_in_any_direction(1)
-		# end
 		[straight_in_any_direction(2), straight_in_any_direction(1)]
 	end
 end
+
 class Bishop < Piece
 	def moves
 		diagonal(1..7)

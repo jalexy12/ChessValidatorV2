@@ -15,23 +15,33 @@ class Board
 		}
 	end
 
-	def check_valid(initial, final)
+	def valid?(initial, final)
 		init = initial.to_sym
 
 		if @board[init].nil?
-			puts "Invalid"
+			# puts "Invalid"
 			return false
 		elsif @board[init].valid_move?(final)
-			puts "Valid"
+			# puts "Valid"
 			return true
 		elsif !@board[init].valid_move?(final)
-			puts "Invalid"
+			# puts "Invalid"
 			return false
 		elsif !@board.has_key?(initial.to_sym)
-			puts "Invalid"
+			# puts "Invalid"
 			return false
 		else
-			puts "Wtf"
+			# puts "Wtf"
+		end
+	end
+
+	def move!(piece, new_pos)
+		if valid?(piece, new_pos)
+			@board[new_pos.to_sym] = @board[piece.to_sym]
+			@board[new_pos.to_sym].update_pos!(new_pos)
+			@board[piece] = nil
+		else
+			puts "Not valid"
 		end
 	end
 end
