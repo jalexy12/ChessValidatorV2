@@ -48,9 +48,11 @@ class Game
 		new_y = cord_splitter(final)[1] - 1
 
 		piece = @rows[x][y][1]
+		new_piece = @rows[new_x][new_y]
 		title = ""
 
-		if @board.valid?(original, final) && !piece.nil?
+		if @board.valid?(original, final) && new_piece[1] == "NilClass"
+			puts new_piece
 			@rows[x][y] = [original, nil]
 			@rows[new_x][new_y] = [final, piece]
 			# @board.move!(original, final)

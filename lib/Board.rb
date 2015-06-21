@@ -17,6 +17,7 @@ class Board
 
 	def valid?(initial, final)
 		init = initial.to_sym
+		fin = final.to_sym
 
 		if @board[init].nil?
 			# puts "Invalid"
@@ -30,8 +31,9 @@ class Board
 		elsif !@board.has_key?(initial.to_sym)
 			# puts "Invalid"
 			return false
-		else
-			# puts "Wtf"
+		elsif !fin.nil?
+			puts fin
+			return false
 		end
 	end
 
