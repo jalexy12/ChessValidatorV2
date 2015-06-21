@@ -21,6 +21,7 @@ class Piece
 
 	def update_pos!(position)
 		@initial = cord_splitter(position)
+		puts @initial
 	end
 
      def valid_move?(final_pos)
