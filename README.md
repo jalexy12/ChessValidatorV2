@@ -13,7 +13,7 @@ Chess Validator
 
 1. Add validatable moves to chessMoves.txt
 
-2. They should follow the format of "original space" "final space" (newline)
+2. They should follow the format of 'original space' 'final space' (newline)
 
 3. Let me know if any of the new ones fail
 
